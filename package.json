@@ -1,0 +1,30 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Task managing app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TurqayUmudzade/TODO.git"
+  },
+  "author": "Turqay Umudzade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TurqayUmudzade/TODO/issues"
+  },
+  "homepage": "https://github.com/TurqayUmudzade/TODO#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.9.28",
+    "validator": "^13.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
