@@ -1,14 +1,17 @@
+//!NOT USED
+
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user);
 });
 
-passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        done(err, user);
-    });
+passport.deserializeUser(function(user, done) {
+    // User.findById(id, function(user, done) {
+    //     done(null, user);
+    // });
+    done(null, user);
 });
 
 
