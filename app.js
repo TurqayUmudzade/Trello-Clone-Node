@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-
+require('dotenv').config()
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 //Database connection
 
-const dbURI = 'mongodb+srv://yoboiturq:nzGQj6x0d8XQAIvF@cluster0.zyklu.mongodb.net/node-auth';
+const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.zyklu.mongodb.net/node-auth`;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
     .then((result) => app.listen(3000, () => console.log("Server Up at port " + port)))
     .catch((err) => console.log(err));
