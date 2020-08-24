@@ -2,11 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 
-const authRoutes = require('./Routes/authRoutes')
-
 
 const app = express();
-
 
 //VIEW ENGINE
 app.set('views', path.join(__dirname, 'Views/pages'));
@@ -29,9 +26,11 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
 //Routes
 app.get('/', (req, res) => res.render('home'));
+
+const authRoutes = require('./Routes/authRoutes')
 app.use(authRoutes);
 
-// 404 page
-app.use((req, res) => {
-    res.status(404).render('404', { title: '404' });
-});
+// // 404 page
+// app.use((req, res) => {
+//     res.status(404).render('404', { title: '404' });
+// });
