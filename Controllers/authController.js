@@ -8,7 +8,13 @@ const handleErrors = (err) => {
     console.log(err.message, err.code)
     let errors = { email: '', password: '' }
 
-    //dub mail
+    //Login
+
+    if (err.message === 'Incorrect Email')
+        errors.email = 'That email is not registered'
+    if (err.message === 'Incorrect Password')
+        errors.password = 'Incorrect password'
+        //dub mail
     if (err.code === 11000) {
         errors.email = 'that email is already linked to an account';
         return errors;
@@ -19,7 +25,6 @@ const handleErrors = (err) => {
             errors[properties.path] = properties.message;
         })
     }
-
 
     return errors;
 }
@@ -56,9 +61,14 @@ module.exports.signup_post = async(req, res) => {
     }
 };
 
-module.exports.login_post = (req, res) => {
+module.exports.login_post = async(req, res) => {
     const { email, password } = req.body;
 
-    console.log(email + " " + password)
-    res.send('user login')
+    try {
+        const user = await User.login(email, password);
+        res.status(200).json({ user: user._id })
+    } catch (err) {
+        const errors = handleErrors(err);
+        res.status(400).json({ errors })
+    }
 }

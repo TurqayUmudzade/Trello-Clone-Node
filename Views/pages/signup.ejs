@@ -55,11 +55,12 @@
 
                 //return errors
                 const data = await res.json();
-                console.log("data errros " + data.errors)
                 if (data.errors) {
-                    console.log(data.errors)
                     emailError.textContent = data.errors.email;
                     passwordError.textContent = data.errors.password;
+                }
+                if (data.user) {
+                    location.assign('/')
                 }
 
             } catch (err) {
