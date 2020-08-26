@@ -11,14 +11,14 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name='email' placeholder="Enter email">
-
+                        <span id="email-validation"></span>
 
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="password">
-
+                        <span id="password-validation"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Log In</button>
                 </form>
@@ -30,9 +30,14 @@
 
     <script>
         const form = document.querySelector('form');
-
+        const emailError = document.querySelector('#email-validation');
+        const passwordError = document.querySelector('#password-validation');
         form.addEventListener('submit', async(e) => {
+
             e.preventDefault();
+
+            emailError.textContent = "";
+            passwordError.textContent = "";
             const email = form.email.value;
             const password = form.password.value;
 
@@ -47,6 +52,15 @@
                         'Content-Type': 'application/json'
                     }
                 })
+
+                //return errors
+                const data = await res.json();
+                console.log("data errros " + data.errors)
+                if (data.errors) {
+                    console.log(data.errors)
+                    emailError.textContent = data.errors.email;
+                    passwordError.textContent = data.errors.password;
+                }
 
             } catch (err) {
                 console.log(err);

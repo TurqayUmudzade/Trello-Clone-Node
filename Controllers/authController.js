@@ -19,6 +19,9 @@ const handleErrors = (err) => {
             errors[properties.path] = properties.message;
         })
     }
+
+
+    return errors;
 }
 
 
@@ -49,7 +52,7 @@ module.exports.signup_post = async(req, res) => {
         res.status(201).json({ user: user._id });
     } catch (err) {
         const errors = handleErrors(err);
-        res.status(400).json(errors)
+        res.status(400).json({ errors });
     }
 };
 
