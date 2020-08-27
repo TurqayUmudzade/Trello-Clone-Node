@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const { requireAuth } = require('./Middleware/authMW');
+const { requireAuth, checkUser } = require('./Middleware/authMW');
 require('dotenv').config()
 
 
@@ -33,6 +33,9 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
 
 //Routes
+
+app.get('*', checkUser);
+
 app.get('/', (req, res) => res.render('home'));
 
 app.get('/secret', requireAuth, (req, res) => res.render('secret'));
