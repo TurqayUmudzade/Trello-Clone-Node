@@ -32,7 +32,9 @@
                     <% if (boards.length>0) { %>
                         <% boards.forEach(board => { %>
                             <li class="list-group-item">
-                                <%= board.name %>
+                                <a href="/my-boards/<%= board._id %>">
+                                    <%= board.name %>
+                                </a>
                             </li>
                             <%}); } %>
 
