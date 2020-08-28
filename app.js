@@ -8,6 +8,7 @@ require('dotenv').config()
 
 //Routes
 const authRoutes = require('./Routes/authRoutes');
+const boardRoutes = require('./Routes/boardRoutes');
 
 
 const app = express();
@@ -18,7 +19,8 @@ app.set('view engine', 'ejs')
 
 //Middleware
 app.use(express.static('./Public'));
-app.use(express.json());
+//app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
@@ -41,6 +43,8 @@ app.get('/', (req, res) => res.render('home'));
 app.get('/secret', requireAuth, (req, res) => res.render('secret'));
 
 app.use(authRoutes);
+
+app.use(boardRoutes);
 
 // 404 page
 app.use((req, res) => {
