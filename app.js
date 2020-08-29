@@ -18,9 +18,9 @@ app.set('views', path.join(__dirname, 'Views/pages'));
 app.set('view engine', 'ejs')
 
 //Middleware
-app.use(express.static('./Public'));
-//app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static('Public'));
+app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 

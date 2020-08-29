@@ -9,7 +9,29 @@
                 <h1>
                     <%= board.name %>
                 </h1>
+            </div>
+            <div class="container-fluid">
+                <div class="cards d-flex justify-content-around">
+                    <div class="card">
+                        <h1>Board name</h1>
+                        <ul class="list-group">
+                            <li class="list-group-item">Some task </li>
+                            <li class="list-group-item">Some task </li>
+                            <li class="list-group-item">Some task </li>
+                            <li><textarea name="new task" id="" cols="30" rows="10"></textarea></li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <form id="createList" action="" method="POST">
+                            <input class="list-name-input" type="text" name="listName" placeholder="Enter list title..." autocomplete="off" maxlength="512">
+                            <button>Add List</button>
+                        </form>
+                    </div>
 
+                </div>
+            </div>
+
+            <script src="/JS/fetchBoardOperations.js"></script>
     </body>
 
     </html>

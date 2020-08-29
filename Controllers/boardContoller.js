@@ -1,6 +1,6 @@
 const { request } = require("express");
 
-const Board = require('../Models/Board');
+const { Board, List } = require('../Models/Board');
 
 //my-board
 module.exports.myBoards = (req, res) => {
@@ -26,4 +26,27 @@ module.exports.BoardDetails = async(req, res) => {
     }).catch(err => {
         console.log(err);
     })
+}
+
+//POST
+module.exports.AddList = async(req, res) => {
+
+    const { id } = req.body;
+    Board.findById(id).then((board) => {
+            const list = {
+                header: "List1",
+                listItem: ['task', 'task2']
+            }
+            board.lists.push(list);
+            board.save();
+        }).catch((e) => {
+            console.log(e);
+        })
+        // List.findById('5f49b4db98bcad61a84410e6').then((list) => {
+        //     console.log(list)
+        // }).catch((e) => {
+        //     console.log(e);
+        // })
+
+    res.send("sa")
 }
