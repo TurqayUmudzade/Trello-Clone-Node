@@ -29,7 +29,7 @@ const port = process.env.PORT || 3000;
 //Database connection
 
 const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.zyklu.mongodb.net/node-auth`;
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
     .then((result) => app.listen(3000, () => console.log("Server Up at port " + port)))
     .catch((err) => console.log(err));
 
