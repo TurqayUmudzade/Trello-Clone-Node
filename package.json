@@ -1,40 +1,41 @@
 {
-  "name": "todo",
-  "version": "1.0.0",
-  "description": "Task managing app",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TurqayUmudzade/TODO.git"
-  },
-  "author": "Turqay Umudzade",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TurqayUmudzade/TODO/issues"
-  },
-  "homepage": "https://github.com/TurqayUmudzade/TODO#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "body-parser": "^1.19.0",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.5",
-    "cookie-session": "^1.4.0",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.3",
-    "express": "^4.17.1",
-    "express-validator": "^6.6.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongodb": "^3.6.0",
-    "mongoose": "^5.9.28",
-    "passport": "^0.4.1",
-    "passport-google-oauth2": "^0.2.0",
-    "passport-local": "^1.0.0",
-    "validator": "^13.1.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  }
+    "name": "todo",
+    "version": "1.0.0",
+    "description": "Task managing app",
+    "main": "index.js",
+    "scripts": {
+        "build-css": "tailwindcss build Public/src/styles.css -o Public/css/styles.css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TurqayUmudzade/TODO.git"
+    },
+    "author": "Turqay Umudzade",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/TurqayUmudzade/TODO/issues"
+    },
+    "homepage": "https://github.com/TurqayUmudzade/TODO#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "body-parser": "^1.19.0",
+        "connect-flash": "^0.1.1",
+        "cookie-parser": "^1.4.5",
+        "cookie-session": "^1.4.0",
+        "dotenv": "^8.2.0",
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "express-validator": "^6.6.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.6.0",
+        "mongoose": "^5.10.2",
+        "passport": "^0.4.1",
+        "passport-google-oauth2": "^0.2.0",
+        "passport-local": "^1.0.0",
+        "tailwindcss": "^1.7.6",
+        "validator": "^13.1.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.4"
+    }
 }
