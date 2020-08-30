@@ -15,6 +15,7 @@ module.exports.myBoards = (req, res) => {
 //POST
 module.exports.CreateBoard = async(req, res) => {
     const { name } = req.body;
+    console.log(name);
     await Board.create({ name });
     res.redirect('/')
 }
@@ -23,7 +24,7 @@ module.exports.CreateBoard = async(req, res) => {
 module.exports.BoardDetails = async(req, res) => {
     const id = req.params.id;
     await Board.findById(id).then(board => {
-        res.render('board-details', { board: board })
+        res.render('board-details', { board: board, lists: board.lists })
     }).catch(err => {
         console.log(err);
     })
@@ -31,18 +32,20 @@ module.exports.BoardDetails = async(req, res) => {
 
 //:POST/Create-list
 module.exports.AddList = async(req, res) => {
+
     const { id, header } = req.body;
+    console.log(id + " " + header);
     let doc = await Board.findById(id);
     doc.lists.push({ header: header, listItems: [] })
     await doc.save();
-    res.send(doc)
+    res.status(200).json({ doc });
 }
 
 module.exports.AddListItem = async(req, res) => {
-    const { id, listID, newListItem } = req.body;
+    const { id, listID, listItem } = req.body;
     let doc = await Board.findById(id);
     let listDoc = doc.lists.find(list => list.id = listID);
-    listDoc.listItems.push(newListItem);
+    listDoc.listItems.push(listItem);
     await doc.save();
     res.send(doc)
 }
