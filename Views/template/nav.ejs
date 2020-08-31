@@ -1,7 +1,7 @@
 <% if(user){%>
     <nav>
         <div class="flex">
-            <div class="logo"><img src="./images/logo.jpg" alt=""></div>
+            <div class="logo-img"><img src="./images/logo.jpg" alt=""></div>
             <a href="" class="font-semibold text-xl tracking-wide text-gray-600 mx-3 leading-loose">Boards</a>
             <a href="" class="font-semibold text-xl tracking-wide text-gray-600 mx-2 leading-loose">Teams</a>
             <div class="w-1/5 ml-4">
@@ -10,18 +10,18 @@
             <div class="nav-auth">
                 <i class="fas fa-bell text-4xl relative text-blue-500 mx-3"></i>
                 <img class=" h-10 rounded-full mx-auto md:mx-0 md:mr-3 inline-block" src="./images/avatar.png">
-                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Log out</button>
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="location.href = '/logout'">Log out</button>
             </div>
         </div>
     </nav>
     <%   }else {%>
         <nav>
             <div class="flex">
-                <div class="logo"><img src="./images/logo.jpg" alt=""></div>
+                <div class="logo-img"><img src="./images/logo.jpg" alt=""></div>
                 <div class="nav-auth">
-                    <button class="bg-blue-500 hover:bg-transparent  border hover:text-blue-700 hover:border-blue-500 text-white font-bold py-2 px-4 rounded">
+                    <button class="bg-blue-500 hover:bg-transparent  border hover:text-blue-700 hover:border-blue-500 text-white font-bold py-2 px-4 rounded" onclick="location.href = '/login'">
                         Log In</button>
-                    <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="location.href = '/signup'">
                             Register</button>
                 </div>
             </div>

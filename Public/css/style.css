@@ -16,10 +16,34 @@ nav {
     margin-right: 10px;
 }
 
-nav .logo img {
+nav .logo-img img {
     height: 42px;
 }
 
 nav .fa-bell {
     top: 10px;
+}
+
+.logo-font {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
+.logo {
+    margin-top: 30px;
+    background: #4299e1;
+    height: 150px;
+    width: fit-content;
+    padding: 0 3rem;
+    line-height: 150px;
+    text-align: center;
+    text-align: center;
+    color: white
+}
+
+.logo span {
+    font-size: 2rem;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
 }
