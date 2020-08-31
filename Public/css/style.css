@@ -17,6 +17,7 @@ nav {
 }
 
 nav .logo-img img {
+    cursor: pointer;
     height: 42px;
 }
 
@@ -46,4 +47,8 @@ nav .fa-bell {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
+}
+
+.left-34 {
+    left: 34px;
 }
