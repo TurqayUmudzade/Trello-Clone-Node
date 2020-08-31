@@ -16,6 +16,11 @@ nav {
     margin-right: 10px;
 }
 
+.nav-auth img,
+.fa-bell {
+    cursor: pointer;
+}
+
 nav .logo-img img {
     cursor: pointer;
     height: 42px;

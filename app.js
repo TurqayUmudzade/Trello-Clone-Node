@@ -9,6 +9,7 @@ require('dotenv').config()
 //Routes
 const authRoutes = require('./Routes/authRoutes');
 const boardRoutes = require('./Routes/boardRoutes');
+const userRoutes = require('./Routes/userRoutes')
 
 
 const app = express();
@@ -45,6 +46,8 @@ app.get('/secret', requireAuth, (req, res) => res.render('secret'));
 app.use(authRoutes);
 
 app.use(boardRoutes);
+
+app.use(userRoutes);
 
 // 404 page
 app.use((req, res) => {
