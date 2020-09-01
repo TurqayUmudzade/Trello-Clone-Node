@@ -9,7 +9,8 @@ form.addEventListener('submit', async(e) => {
     passwordError.textContent = ' ';
     const email = form.email.value;
     const password = form.password.value;
-
+    $('input[name=email]').removeClass('border-red-500');
+    $('input[name=password]').removeClass('border-red-500');
     try {
         const res = await fetch('/login', {
             method: 'POST',
@@ -27,7 +28,11 @@ form.addEventListener('submit', async(e) => {
 
         if (data.errors) {
             emailError.textContent = data.errors.email;
+            if (emailError.textContent.length > 0)
+                $('input[name=email]').addClass('border-red-500');
             passwordError.textContent = data.errors.password;
+            if (passwordError.textContent.length > 0)
+                $('input[name=password]').addClass('border-red-500');
         }
         if (data.user) {
             location.assign('/')

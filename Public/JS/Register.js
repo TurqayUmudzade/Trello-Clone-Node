@@ -26,7 +26,11 @@ form.addEventListener('submit', async(e) => {
         const data = await res.json();
         if (data.errors) {
             emailError.textContent = data.errors.email;
+            if (emailError.textContent.length > 0)
+                $('input[name=email]').addClass('border-red-500');
             passwordError.textContent = data.errors.password;
+            if (passwordError.textContent.length > 0)
+                $('input[name=password]').addClass('border-red-500');
         }
         if (data.user) {
             location.assign('/')

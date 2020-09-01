@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const { requireAuth, checkUser, getUserID } = require('./Middleware/authMW');
 require('dotenv').config()
 
 
@@ -22,7 +23,6 @@ app.use(express.static('Public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-const { requireAuth, checkUser, getUserID } = require('./Middleware/authMW');
 app.use(getUserID)
 
 
@@ -40,15 +40,16 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
 app.get('*', checkUser);
 
-
 app.get('/', (req, res) => { res.render('home') });
 
-app.get('/secret', requireAuth, (req, res) => res.render('secret'));
-
+//Login/Register
 app.use(authRoutes);
 
+
+//[Auth]
 app.use(boardRoutes);
 
+//[Auth]
 app.use(userRoutes);
 
 // 404 page

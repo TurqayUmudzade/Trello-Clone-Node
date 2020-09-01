@@ -36,10 +36,12 @@ const checkUser = (req, res, next) => {
         res.locals.user = null;
         next();
     }
+
 }
 
 const getUserID = (req, res, next) => {
     const token = req.cookies.jwt;
+
     if (token) {
         jwt.verify(token, process.env.SECRET_JWT, async(err, token) => {
             if (err) {
@@ -50,7 +52,8 @@ const getUserID = (req, res, next) => {
                 next();
             }
         })
-    }
+    } else
+        next();
 }
 
 
