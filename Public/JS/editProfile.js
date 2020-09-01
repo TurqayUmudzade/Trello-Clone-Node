@@ -1,7 +1,9 @@
+//EDIT DATA
 const editUserForm = document.querySelector('#editUserForm');
 const emailError = document.querySelector('#email-validation');
 const usernameError = document.querySelector('#username-validation');
 const fullnameError = document.querySelector('#fullname-validation');
+
 editUserForm.addEventListener('submit', async(e) => {
 
     e.preventDefault();
@@ -15,20 +17,18 @@ editUserForm.addEventListener('submit', async(e) => {
 
     try {
         const res = await fetch('/my-profile', {
-            method: 'POST',
-            body: JSON.stringify({
-                fullname,
-                username,
-                email
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        //return errors
+                method: 'POST',
+                body: JSON.stringify({
+                    fullname,
+                    username,
+                    email
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            //return errors
         const data = await res.json();
-
         if (data.errors) {
             emailError.textContent = data.errors.email;
             usernameError.textContent = data.errors.username;
@@ -37,5 +37,32 @@ editUserForm.addEventListener('submit', async(e) => {
     } catch (err) {
         console.log(err);
     }
-
 })
+
+
+
+//PROFILE PICTURE
+
+async function uploadPicture(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#profileImage').attr('src', e.target.result)
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+    const form = document.querySelector('#imageUpload')
+    const formData = new FormData();
+    formData.append("inpFile", input.files[0]);
+    try {
+        const res = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+
+    } catch (error) {
+        console.log(error);
+    }
+}

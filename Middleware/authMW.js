@@ -38,6 +38,22 @@ const checkUser = (req, res, next) => {
     }
 }
 
+const getUserID = (req, res, next) => {
+    const token = req.cookies.jwt;
+    if (token) {
+        jwt.verify(token, process.env.SECRET_JWT, async(err, token) => {
+            if (err) {
+                console.log(err);
+                next();
+            } else {
+                req.userID = token.id;
+                next();
+            }
+        })
+    }
+}
 
 
-module.exports = { requireAuth, checkUser };
+
+
+module.exports = { requireAuth, checkUser, getUserID };

@@ -1,5 +1,3 @@
-const { request, response } = require("express");
-
 //const { Board, List } = require('../Models/Board');
 const Board = require('../Models/Board');
 
