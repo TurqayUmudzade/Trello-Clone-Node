@@ -45,7 +45,6 @@ app.get('/', (req, res) => { res.render('home') });
 //Login/Register
 app.use(authRoutes);
 
-
 //[Auth]
 app.use(boardRoutes);
 

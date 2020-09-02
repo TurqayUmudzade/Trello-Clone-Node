@@ -13,9 +13,8 @@ module.exports.myBoards = (req, res) => {
 //POST
 module.exports.CreateBoard = async(req, res) => {
     const { name } = req.body;
-    console.log(name);
-    await Board.create({ name });
-    res.redirect('/')
+    const board = await Board.create({ name });
+    res.redirect('/my-boards/' + board.id)
 }
 
 //my-board/id
