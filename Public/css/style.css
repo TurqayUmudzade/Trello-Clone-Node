@@ -43,7 +43,6 @@ nav .fa-bell {
     padding: 0 3rem;
     line-height: 150px;
     text-align: center;
-    text-align: center;
     color: white
 }
 
@@ -56,4 +55,19 @@ nav .fa-bell {
 
 .left-34 {
     left: 34px;
+}
+
+.boards .fa-star.right {
+    right: -2rem;
+}
+
+.board:hover .fa-star {
+    right: 0;
+    transition: 300ms ease-in-out;
+}
+
+.boards .fa-star:hover {
+    color: #718096;
+    font-size: 1.2rem;
+    transition: 100ms ease-in-out;
 }
