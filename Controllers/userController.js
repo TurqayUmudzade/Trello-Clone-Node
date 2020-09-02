@@ -35,14 +35,14 @@ module.exports.edit_my_profile = async(req, res) => {
 
 
 //POST image
-module.exports.upload_picture = (req, res) => {
+module.exports.upload_picture = async(req, res) => {
     console.log('\nPOST for profile-photo: ');
     console.log('- req.file: ', req.file);
-
-    // const image = req.file
-    // if (image) {
-    //     var file = image.file;
-    //     var filename = image.originalname;
-    //     console.log(filename);
-    // }
+    try {
+        let doc = await User.findByIdAndUpdate(req.userID);
+        doc.image = req.file.filename;
+        await doc.save();
+    } catch (error) {
+        console.log(error);
+    }
 }

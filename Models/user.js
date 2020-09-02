@@ -23,6 +23,9 @@ const userSchema = mongoose.Schema({
         type: String,
         maxlength: [50, 'Fullname cannot be longer than 50 characters']
     },
+    image: {
+        type: String
+    }
 });
 
 

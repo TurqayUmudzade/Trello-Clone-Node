@@ -4,59 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <title>Title</title>
     <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/style.css">
-    <!-- JS, Popper.js, and jQuery -->
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e3658e79d2.js" crossorigin="anonymous"></script>
+
+    <!--  jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">TODO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Login</a>
+    <!-- Nav with User -->
+    <nav>
+        <div class="flex">
+            <div class="logo"><img src="./images/logo.jpg" alt=""></div>
+            <a href="" class="font-semibold text-xl tracking-wide text-gray-600 mx-3 leading-loose">Boards</a>
+            <a href="" class="font-semibold text-xl tracking-wide text-gray-600 mx-2 leading-loose">Teams</a>
+            <div class="w-1/5 ml-4">
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-full-name" type="text" value="Jane Doe">
+            </div>
+            <div class="nav-auth">
+                <i class="fas fa-bell text-4xl relative text-blue-500 mx-3"></i>
+                <img class=" h-10 rounded-full mx-auto md:mx-0 md:mr-3 inline-block" src="./images/avatar.png">
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Log out</button>
             </div>
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="cards d-flex justify-content-around">
-            <div class="card">
-                <h1>Board name</h1>
-                <ul class="list-group">
-                    <li class="list-group-item">Some task </li>
-                    <li class="list-group-item">Some task </li>
-                    <li class="list-group-item">Some task </li>
-                    <li><textarea name="new task" id="" cols="30" rows="10"></textarea></li>
-                </ul>
-            </div>
-            <div class="card">
-                <form action="" method="POST">
-                    <input class="list-name-input" type="text" name="listName" placeholder="Enter list title..." autocomplete="off" maxlength="512">
-                    <button>Add List</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-
-
-
-
 
 </body>
-
-<script src="./JS/fetchBoardOperations.js"></script>
-
-</html>
