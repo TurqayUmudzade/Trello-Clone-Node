@@ -22,8 +22,8 @@
                                 <h6 class="font font-semibold text-base p-2">Board name</h6>
                                 <i class="far fa-star  right text-gray-400 absolute bottom-0 right-0 p-3"></i>
                             </div>
-                            <div class="board bg-gray-200 border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden flex items-center justify-center">
-                                <h6 class="font text-gray-600 text-base text-center p-2 cursor-pointer js-create-board">Create new board</h6>
+                            <div class="js-create-board board bg-gray-200 border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden flex items-center justify-center">
+                                <h6 class="font text-gray-600 text-base text-center p-2 cursor-pointer ">Create new board</h6>
                             </div>
                         </div>
                     </div>
@@ -69,21 +69,22 @@
               -->
                     <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
                         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex">
-                            <div class="js-board-creator w-64 h-32 border rounded bg-white">
+                            <div class="js-board-creator w-64 h-32 border rounded bg-red-400">
                                 <form action="/create-board" method="POST" id="createBoardForm" class="js-create-board-form m-2">
-                                    <input class=" appearance-none border rounded  py-2 px-3 text-gray-300 leading-tight focus:outline-none bg-transparent placeholder-gray-300 " type="text" placeholder="Add board title" name="name">
+                                    <input class=" appearance-none border rounded  py-2 px-3 text-gray-600 leading-tight focus:outline-none bg-transparent placeholder-gray-300 background-semi-trans" type="text" placeholder="Add board title" name="name" autocomplete="off">
+                                    <input type="hidden" name="color" value="bg-white">
                                 </form>
                             </div>
                             <div class="flex flex-wrap w-32 ml-4">
                                 <div class="js-color-palette h-8 w-8 rounded border m-1 bg-red-400"></div>
                                 <div class="js-color-palette h-8 w-8 rounded border m-1 bg-orange-400"></div>
-                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-yellow-400"></div>
                                 <div class="js-color-palette h-8 w-8 rounded border m-1 bg-green-400"></div>
                                 <div class="js-color-palette h-8 w-8 rounded border m-1 bg-teal-400"></div>
                                 <div class="js-color-palette h-8 w-8 rounded border m-1 bg-blue-400"></div>
                                 <div class="js-color-palette h-8 w-8 rounded border m-1 bg-indigo-400"></div>
                                 <div class="js-color-palette h-8 w-8 rounded border m-1 bg-purple-400"></div>
                                 <div class="js-color-palette h-8 w-8 rounded border m-1 bg-pink-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-white"></div>
                             </div>
                         </div>
                         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">

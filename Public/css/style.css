@@ -71,3 +71,7 @@ nav .fa-bell {
     font-size: 1.2rem;
     transition: 100ms ease-in-out;
 }
+
+.background-semi-trans {
+    background: rgba(0, 0, 0, 0.15);
+}

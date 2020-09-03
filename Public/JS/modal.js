@@ -15,4 +15,5 @@ $('.js-color-palette').on('click', function() {
     let lastClass = $('.js-board-creator').attr('class').split(' ').pop();
     $('.js-board-creator').removeClass(lastClass)
     $('.js-board-creator').addClass(color);
+    $('.js-create-board-form input[type=hidden]').val(color);
 })
