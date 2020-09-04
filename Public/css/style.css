@@ -86,6 +86,10 @@ nav .fa-bell {
     left: 0.75rem;
 }
 
+.w-60 {
+    width: 15rem;
+}
+
 .lists .list ul li {
     box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
     width: 15rem;
