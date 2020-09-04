@@ -80,3 +80,17 @@ nav .fa-bell {
     top: 1.5rem;
     left: 1.3rem;
 }
+
+.lists .add-card i {
+    top: 0.7rem;
+    left: 0.75rem;
+}
+
+.lists .list ul li {
+    box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
+    width: 15rem;
+}
+
+.text-color {
+    color: #4a5568
+}
