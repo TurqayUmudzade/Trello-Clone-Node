@@ -75,3 +75,8 @@ nav .fa-bell {
 .background-semi-trans {
     background: rgba(0, 0, 0, 0.15);
 }
+
+.lists .add-list i {
+    top: 1.5rem;
+    left: 1.3rem;
+}
