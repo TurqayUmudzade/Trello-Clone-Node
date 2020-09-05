@@ -3,7 +3,7 @@ require('dotenv').config()
 
 // /my-profile
 module.exports.get_my_profile = (req, res) => {
-    res.render('my-profile');
+    res.render('my-profile', { title: 'My Profile' });
 }
 
 //POST

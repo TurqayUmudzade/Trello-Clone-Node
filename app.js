@@ -40,7 +40,12 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
 app.get('*', checkUser);
 
-app.get('/', (req, res) => { res.render('home') });
+app.get('/', (req, res) => {
+    if (req.userID)
+        res.redirect('/my-boards')
+    else
+        res.render('home', { title: 'Ace' })
+});
 
 //Login/Register
 app.use(authRoutes);
