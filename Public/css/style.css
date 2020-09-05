@@ -76,6 +76,11 @@ nav .fa-bell {
     background: rgba(0, 0, 0, 0.15);
 }
 
+.list {
+    min-width: 16rem;
+    height: fit-content;
+}
+
 .lists .add-list i {
     top: 1.5rem;
     left: 1.3rem;
