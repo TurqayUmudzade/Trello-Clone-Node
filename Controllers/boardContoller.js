@@ -1,4 +1,3 @@
-//const { Board, List } = require('../Models/Board');
 const Board = require('../Models/Board');
 
 //my-board
@@ -14,18 +13,22 @@ module.exports.myBoards = (req, res) => {
 module.exports.CreateBoard = async(req, res) => {
     const { name, color } = req.body;
     const users = [req.userID];
-    console.log(color);
     const board = await Board.create({ name, color, users });
     res.redirect('/my-boards/' + board.id)
 }
 
 //my-board/id
 module.exports.BoardDetails = async(req, res) => {
+
     const id = req.params.id;
     await Board.findById(id).then(board => {
-        res.render('board-details', { board: board, lists: board.lists })
+        if (board.users.includes(req.userID)) {
+            res.render('board-details', { board: board, lists: board.lists })
+        } else
+            res.redirect("/404")
     }).catch(err => {
         console.log(err);
+        res.redirect("/404")
     })
 }
 
@@ -33,7 +36,6 @@ module.exports.BoardDetails = async(req, res) => {
 module.exports.AddList = async(req, res) => {
 
     const { id, header } = req.body;
-    console.log(id + " " + header);
     let doc = await Board.findById(id);
     doc.lists.push({ header: header, listItems: [] })
     await doc.save();

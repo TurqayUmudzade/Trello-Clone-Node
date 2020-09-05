@@ -1,5 +1,7 @@
-//LIST OPERATIONS
+//Board ID
+const id = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
 
+//LIST OPERATIONS
 $(".js-create-list").focus(function() {
     $('.add-list .fa-plus').hide();
     $(this).removeClass('pl-10');
@@ -21,26 +23,31 @@ $(".js-create-list").blur(function() {
 
 $(".js-add-list-button").on("click", function() {
     let listName = $(this).siblings('input').val();
-    let id = 'dsada';
-    addList(id, listName);
+    addList(listName);
     $(this).siblings('input').val('');
 });
 
 $(".js-create-list").on("keypress", function(e) {
     let listName = $(this).val();
-    let id = 'dsada';
     if (e.keyCode == 13) {
-        addList(id, listName);
+        addList(listName);
         e.preventDefault();
         $(this).val('');
     }
 });
 
-async function addList(listID, listName) {
+async function addList(listName) {
     if (!listName)
         listName = " ";
-
-    $('.lists .add-list').before(`<div id="${listID}" class="list  mx-4 relative w-64 bg-gray-200 rounded ">
+    try {
+        const res = await fetch('add-list', {
+            method: 'POST',
+            body: JSON.stringify({ id, header: listName }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        let listID = data.doc.lists[data.doc.lists.length - 1]._id;
+        $('.lists .add-list').before(`<div id="${listID}" class="list  mx-4 relative w-64 bg-gray-200 rounded ">
     <div class="header flex justify-between p-3 text-color">
         <h1 class="font-bold text-xl mb-2">${listName}</h1>
         <i class="fas fa-ellipsis-h cursor-pointer hover:bg-gray-300 px-1 h-5 rounded"></i>
@@ -55,6 +62,9 @@ async function addList(listID, listName) {
         </div>
     </div>
 </div>`)
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 
@@ -103,3 +113,6 @@ async function addCard(listID, text) {
         text = " ";
     $('#' + listID + ' ul ').append(`<li class="bg-white rounded h-8 mx-auto my-2 px-2 py-1">${text}</li>`);
 }
+
+
+//
