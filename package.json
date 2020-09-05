@@ -17,6 +17,7 @@
     },
     "homepage": "https://github.com/TurqayUmudzade/TODO#readme",
     "dependencies": {
+        "@shopify/draggable": "^1.0.0-beta.8",
         "bcrypt": "^5.0.0",
         "body-parser": "^1.19.0",
         "connect-flash": "^0.1.1",
