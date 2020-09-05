@@ -4,46 +4,126 @@
     <body>
 
         <%- include('../template/nav')-%>
-            <div class="container">
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="create-board" method="post" id="create-board">
-                                    <input type="text" placeholder="Board Name" name="name">
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" form="create-board" class="btn btn-primary">Add Board</button>
+            <div class="lg:container lg:mx-auto">
+                <div class="boards-list">
+                    <div class="boards-container" id="starred">
+                        <h1 class="font-semibold text-xl tracking-wide text-blue-800 mx-2 leading-loose"> <i class="fas fa-star text-blue-500"></i> Starred Boards</h1>
+                        <div class="boards flex flex-wrap">
+                            <% if (favorites.length>0) { %>
+                                <% favorites.forEach(board => { %>
+                                    <div id="<%= board._id %>" class="board border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden <%= board.color %>">
+                                        <h6 class="font font-semibold text-base p-2">
+                                            <%= board.name %>
+                                        </h6>
+                                        <i class="js-add-fav far fa-star  text-yellow-300 absolute bottom-0 right-0 p-3 hover:text-yellow-400"></i>
+                                    </div>
+                                    <%}); } %>
+                        </div>
+                    </div>
+
+                    <div class="boards-container " id="personal ">
+                        <h1 class="font-semibold text-xl tracking-wide text-blue-800 mx-2 leading-loose "> <i class="fas fa-user text-blue-500 "></i> Personal Boards</h1>
+
+                        <div class="boards flex flex-wrap">
+                            <% if (boards.length>0) { %>
+                                <% boards.forEach(board => { %>
+                                    <div id="<%= board._id %>" class="board border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden <%= board.color %>">
+                                        <h6 class="font font-semibold text-base p-2">
+                                            <%= board.name %>
+                                        </h6>
+                                        <% if(board.starred===true) {%>
+                                            <i class="js-add-fav far fa-star  text-yellow-300 absolute bottom-0 right-0 p-3 hover:text-yellow-400"></i>
+                                            <%}else{%>
+                                                <i class="js-add-fav far fa-star  right text-gray-400 absolute bottom-0 right-0 p-3"></i>
+                                                <% }%>
+                                    </div>
+                                    <%}); } %>
+                                        <div class="js-create-board board bg-gray-200 border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden flex items-center justify-center">
+                                            <h6 class="font text-gray-600 text-base text-center p-2 cursor-pointer ">Create new board</h6>
+                                        </div>
+                        </div>
+                    </div>
+
+                    <div class="boards-container " id="teams ">
+                        <h1 class="font-semibold text-xl tracking-wide text-blue-800 mx-2 leading-loose "> <i class="fas fa-users text-blue-500 "></i> Team Boards</h1>
+                        <div class="boards flex flex-wrap">
+                            <div class="board border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden">
+                                <h6 class="font font-semibold text-base p-2">Board name</h6>
+                                <i class="far fa-star right text-gray-400 absolute bottom-0 right-0 p-3"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                <h3>My Boards</h3>
-                <ul>
-                    <% if (boards.length>0) { %>
-                        <% boards.forEach(board => { %>
-                            <li class="list-group-item">
-                                <a href="/my-boards/<%= board._id %>">
-                                    <%= board.name %>
-                                </a>
-                            </li>
-                            <%}); } %>
-
-                                <li class="list-group-item js-create-board" data-toggle="modal" data-target="#exampleModal">
-                                    Create a new board
-                                </li>
-                </ul>
             </div>
 
+            <div class="fixed z-10 inset-0 overflow-y-auto js-modal hidden pointer-evensts-none">
+                <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 ">
+                    <!--
+                Background overlay, show/hide based on modal state.
+          
+                Entering: "ease-out duration-300"
+                  From: "opacity-0"
+                  To: "opacity-100"
+                Leaving: "ease-in duration-200"
+                  From: "opacity-100"
+                  To: "opacity-0"
+              -->
+                    <div class="fixed inset-0 transition-opacity">
+                        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                    </div>
+
+                    <!-- This element is to trick the browser into centering the modal contents. -->
+                    <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
+                    <!--
+                Modal panel, show/hide based on modal state.
+          
+                Entering: "ease-out duration-300"
+                  From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                  To: "opacity-100 translate-y-0 sm:scale-100"
+                Leaving: "ease-in duration-200"
+                  From: "opacity-100 translate-y-0 sm:scale-100"
+                  To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              -->
+                    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+                        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 flex">
+                            <div class="js-board-creator w-64 h-32 border rounded bg-red-400">
+                                <form action="/create-board" method="POST" id="createBoardForm" class="js-create-board-form m-2">
+                                    <input class=" appearance-none border rounded  py-2 px-3 text-gray-600 leading-tight focus:outline-none bg-transparent placeholder-gray-300 background-semi-trans" type="text" placeholder="Add board title" name="name" autocomplete="off">
+                                    <input type="hidden" name="color" value="bg-white">
+                                </form>
+                            </div>
+                            <div class="flex flex-wrap w-32 ml-4">
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-red-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-orange-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-green-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-teal-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-blue-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-indigo-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-purple-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-pink-400"></div>
+                                <div class="js-color-palette h-8 w-8 rounded border m-1 bg-white"></div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                            <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+                    <button type="submit" form="createBoardForm" class=" js-create-board-btn justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-500 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-600 focus:outline-none focus:border-green-700 focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                      Create Board
+                    </button>
+                  </span>
+                            <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+                    <button type="button" class="js-cancel inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                      Cancel
+                    </button>
+                  </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script src="/JS/boardHandlers.js"></script>
+
     </body>
+
+    </html>
 
     </html>

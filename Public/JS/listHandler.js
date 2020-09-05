@@ -111,7 +111,22 @@ $(document).on('keypress', '.js-create-card', function(e) {
 async function addCard(listID, text) {
     if (!text)
         text = " ";
-    $('#' + listID + ' ul ').append(`<li class="bg-white rounded h-8 mx-auto my-2 px-2 py-1">${text}</li>`);
+
+
+    try {
+        const res = await fetch('add-list-item', {
+            method: 'POST',
+            body: JSON.stringify({ id, listID, listItem: text }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await res.json();
+        console.log(data);
+        $('#' + listID + ' ul ').append(`<li class="bg-white rounded h-8 mx-auto my-2 px-2 py-1">${text}</li>`);
+    } catch (error) {
+        console.log(error);
+    }
+
+
 }
 
 

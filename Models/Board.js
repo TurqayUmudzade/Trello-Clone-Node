@@ -8,6 +8,7 @@ const BoardSchema = mongoose.Schema({
         required: true,
     },
     color: String,
+    starred: { type: Boolean, default: false },
     users: [mongoose.Schema.Types.ObjectId],
     lists: [{ header: String, listItems: Array }]
 })
