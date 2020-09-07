@@ -79,11 +79,25 @@ module.exports.AddList = async(req, res) => {
 
 //:POST/add-list-item
 module.exports.AddListItem = async(req, res) => {
-
     const { id, listID, listItem } = req.body;
     let doc = await Board.findById(id);
     let listDoc = doc.lists.find(list => list.id === listID);
     listDoc.listItems.push(listItem);
     await doc.save();
     res.send(doc)
+}
+
+
+//:POST/add-list-item
+module.exports.SearchBar = async(req, res) => {
+
+    const searchStr = req.params.searchStr;
+    console.log(searchStr);
+    await Board.find({ name: { "$regex": searchStr, "$options": "i" }, users: req.userID }).then(result => {
+        res.render('../partials/searchBoards', { boards: result });
+
+    }).catch(err => {
+        console.log(err);
+    });
+
 }

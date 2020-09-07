@@ -11,7 +11,7 @@
                         <div class="boards flex flex-wrap">
                             <% if (favorites.length>0) { %>
                                 <% favorites.forEach(board => { %>
-                                    <div id="<%= board._id %>" class="board border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden <%= board.color %>">
+                                    <div id="<%= board._id %>" class="board border w-56 h-28  rounded mx-4 my-2 relative overflow-hidden <%= board.color %>">
                                         <h6 class="font font-semibold text-base p-2">
                                             <%= board.name %>
                                         </h6>
@@ -27,7 +27,7 @@
                         <div class="boards flex flex-wrap">
                             <% if (boards.length>0) { %>
                                 <% boards.forEach(board => { %>
-                                    <div id="<%= board._id %>" class="board border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden <%= board.color %>">
+                                    <div id="<%= board._id %>" class="board border w-56 h-28 rounded mx-4 my-2 relative overflow-hidden <%= board.color %>">
                                         <h6 class="font font-semibold text-base p-2">
                                             <%= board.name %>
                                         </h6>
@@ -38,7 +38,7 @@
                                                 <% }%>
                                     </div>
                                     <%}); } %>
-                                        <div class="js-create-board board bg-gray-200 border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden flex items-center justify-center">
+                                        <div class="js-create-board board bg-gray-200 border w-56 h-28  rounded mx-4 my-2 relative overflow-hidden flex items-center justify-center">
                                             <h6 class="font text-gray-600 text-base text-center p-2 cursor-pointer ">Create new board</h6>
                                         </div>
                         </div>
@@ -47,7 +47,7 @@
                     <div class="boards-container " id="teams ">
                         <h1 class="font-semibold text-xl tracking-wide text-blue-800 mx-2 leading-loose "> <i class="fas fa-users text-blue-500 "></i> Team Boards</h1>
                         <div class="boards flex flex-wrap">
-                            <div class="board border w-40 h-24 rounded mx-4 my-2 relative overflow-hidden">
+                            <div class="board border w-56 h-28  rounded mx-4 my-2 relative overflow-hidden">
                                 <h6 class="font font-semibold text-base p-2">Board name</h6>
                                 <i class="far fa-star right text-gray-400 absolute bottom-0 right-0 p-3"></i>
                             </div>
@@ -121,6 +121,7 @@
             </div>
 
             <script src="/JS/boardHandlers.js"></script>
+            <script src="/JS/searchBar.js"></script>
 
     </body>
 

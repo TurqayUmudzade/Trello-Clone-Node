@@ -15,4 +15,8 @@ router.post('/my-boards/add-list-item', requireAuth, boardContoller.AddListItem)
 router.post('/my-boards/AddToFav', requireAuth, boardContoller.AddToFav)
 router.post('/my-boards/RemoveFromFav', requireAuth, boardContoller.RemoveFromFav)
 
+//SEARCH BAR
+router.get('/search-bar/:searchStr', requireAuth, boardContoller.SearchBar)
+
+
 module.exports = router;
