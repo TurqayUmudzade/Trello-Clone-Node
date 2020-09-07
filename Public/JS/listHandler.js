@@ -71,25 +71,30 @@ async function addList(listName) {
 //CARD OPERATIONS
 let lastList;
 
-$(document).on('focus', '.js-create-card', function(e) {
-    $(this).siblings('.add-card .fa-plus').hide();
-    $(this).removeClass('pl-8 bg-gray-200');
-    $(this).addClass('h-20 px-4 w-60 resize bg-white');
-    $(this).siblings('.js-add-card-button').removeClass('hidden');
-    lastList = $(this).parent().parent().parent().attr('id');
-});
 
 $(document).click(function(e) {
     var target = e.target;
     var lastElement = '#' + lastList;
 
-    if (!$(target).is(lastElement) && !$(target).parent().parent().is(lastElement) && !$(target).parent().parent().parent().is(lastElement)) {
+    if (!$(target).is(lastElement) && !$(target).parent().parent().is(lastElement) && !$(target).parent().parent().parent(lastElement).is(lastElement)) {
         $('.add-card .fa-plus').show();
         $(lastElement).children().children().children('textarea').addClass('pl-8 bg-gray-200');
         $(lastElement).children().children().children('textarea').removeClass('h-20 px-4 w-60 resize bg-white');
         $('.js-add-card-button').addClass('hidden')
     }
 });
+
+$(document).on('focus', '.js-create-card', function(e) {
+    setTimeout(() => {
+        $(this).siblings('.add-card .fa-plus').hide();
+        $(this).removeClass('pl-8 bg-gray-200');
+        $(this).addClass('h-20 px-4 w-60 resize bg-white');
+        $(this).siblings('.js-add-card-button').removeClass('hidden');
+        lastList = $(this).parent().parent().parent().attr('id');
+    }, 100);
+});
+
+
 
 $(document).on('click', '.js-add-card-button', function(e) {
     let text = $(this).siblings('textarea').val();
@@ -111,7 +116,6 @@ $(document).on('keypress', '.js-create-card', function(e) {
 async function addCard(listID, text) {
     if (!text)
         text = " ";
-
 
     try {
         const res = await fetch('add-list-item', {

@@ -79,9 +79,10 @@ module.exports.AddList = async(req, res) => {
 
 //:POST/add-list-item
 module.exports.AddListItem = async(req, res) => {
+
     const { id, listID, listItem } = req.body;
     let doc = await Board.findById(id);
-    let listDoc = doc.lists.find(list => list.id = listID);
+    let listDoc = doc.lists.find(list => list.id === listID);
     listDoc.listItems.push(listItem);
     await doc.save();
     res.send(doc)
