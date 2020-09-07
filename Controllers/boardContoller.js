@@ -92,10 +92,8 @@ module.exports.AddListItem = async(req, res) => {
 module.exports.SearchBar = async(req, res) => {
 
     const searchStr = req.params.searchStr;
-    console.log(searchStr);
     await Board.find({ name: { "$regex": searchStr, "$options": "i" }, users: req.userID }).then(result => {
         res.render('../partials/searchBoards', { boards: result });
-
     }).catch(err => {
         console.log(err);
     });

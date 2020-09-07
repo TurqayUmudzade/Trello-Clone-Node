@@ -4,8 +4,13 @@
             <div class="logo-img"><img src="/images/logo.jpg" onclick="location.href='/'"></div>
             <a href="/my-boards" class="font-semibold text-xl tracking-wide text-gray-600 mx-3 leading-loose">Boards</a>
             <a href="/teams" class="font-semibold text-xl tracking-wide text-gray-600 mx-2 leading-loose">Teams</a>
-            <div class="w-1/5 ml-4">
+            <div class="w-1/5 ml-4 relative">
                 <input class="js-search bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" placeholder="Search">
+                <div class="result absolute bg-gray-100 rounded w-64 mt-2 hidden p-3">
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">Boards</h4>
+                    <ul class="js-search-result border rounded">
+                    </ul>
+                </div>
             </div>
             <div class="nav-auth">
                 <i class="fas fa-bell text-4xl relative text-blue-500 mx-3"></i>
