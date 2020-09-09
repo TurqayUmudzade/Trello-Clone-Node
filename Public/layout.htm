@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        404
+    </title>
+    <!-- CSS only -->
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e3658e79d2.js" crossorigin="anonymous"></script>
+    <!--  jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link type="image/x-icon" rel="icon" href="./images/logo.jpg">
+</head>
+
+<body>
+
+
+    <nav>
+        <div class="flex items-center">
+            <i class="fas fa-bars text-4xl relative text-blue-500 mr-3"></i>
+            <div class="logo-img"><img src="./images/logo.jpg" onclick="location.href='/'"></div>
+            <div class="nav-links">
+                <a href="/my-boards" class="font-semibold text-xl tracking-wide text-gray-600 mx-2 leading-loose">Boards</a>
+                <a href="/teams" class="font-semibold text-xl tracking-wide text-gray-600 mx-2 leading-loose">Teams</a>
+            </div>
+            <div class="search-bar sm:w-2/6 w-1/5 ml-4 relative ">
+                <input class="js-search bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" placeholder="Search">
+
+                <div class="result absolute bg-gray-100 rounded w-64 mt-2 hidden p-3">
+                    <h4 class="font-bold text-lg mb-2 text-gray-700">Boards</h4>
+                    <ul class="js-search-result border rounded">
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-auth flex items-center justify-around">
+                <i class="fas fa-bell text-4xl relative text-blue-500 mx-3"></i>
+                <img class=" h-10 w-10 rounded-full mx-auto mr-3 inline-block" src="./images/UserProfiles/5f4e83e946af490d4ce329fd.jpeg" onclick="location.href='/my-profile'">
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="location.href = '/logout'">Log out</button>
+                <i class="fas fa-sign-out-alt text-4xl  text-blue-500" onclick="location.href = '/logout'"></i>
+            </div>
+        </div>
+    </nav>
+
+    <script src="./JS//navHandler.js"></script>
+
+</body>
+
+</html>

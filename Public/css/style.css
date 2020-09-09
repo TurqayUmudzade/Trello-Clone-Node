@@ -27,7 +27,16 @@ nav .logo-img img {
 }
 
 nav .fa-bell {
-    top: 10px;
+    /* top: 10px; */
+}
+
+nav .fa-sign-out-alt,
+nav .fa-bars {
+    display: none;
+}
+
+nav .result {
+    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, .25), 0 0 0 1px rgba(9, 30, 66, .08);
 }
 
 .logo-font {
@@ -104,6 +113,45 @@ nav .fa-bell {
     color: #4a5568
 }
 
-nav .result {
-    box-shadow: 0 8px 16px -4px rgba(9, 30, 66, .25), 0 0 0 1px rgba(9, 30, 66, .08);
+
+/* RESPONSIVENESS */
+
+.nav-links-sm {
+    display: block !important;
+    position: absolute;
+    top: 110px;
+    left: -12px;
+    width: calc(100% + 12px);
+    display: flex !important;
+    flex-direction: column;
+    padding: 20px 16px;
+    background: #edf2f7;
+}
+
+.nav-search-sm {
+    display: block !important;
+    position: absolute;
+    top: 65px;
+    width: 80%;
+}
+
+@media only screen and (max-width: 690px) {
+    nav .fa-sign-out-alt {
+        display: block;
+    }
+    nav .nav-auth button {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    nav .search-bar {
+        display: none;
+    }
+    nav .fa-bars {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+    }
 }

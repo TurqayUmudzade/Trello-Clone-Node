@@ -52,7 +52,10 @@ $(document).on('click', '.js-add-fav', async function(e) {
             console.log(error);
         }
 
-
-
     }
+});
+
+$('.board').on('click', function() {
+    let id = $(this).attr('id');
+    window.location.href = '/my-boards/' + id;
 });
