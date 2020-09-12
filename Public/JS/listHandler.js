@@ -134,4 +134,28 @@ async function addCard(listID, text) {
 }
 
 
-//
+//COSMETIC
+$('.js-list-options').on('click', function() {
+    let child = $(this).children('.options');
+    if (child.hasClass('hidden'))
+        child.removeClass('hidden')
+    else
+        child.addClass('hidden')
+})
+
+
+$('.js-delete-list').on('click', async function() {
+    let listID = $(this).closest('.list').attr('id');
+    try {
+        const res = await fetch('remove-list', {
+            method: 'POST',
+            body: JSON.stringify({ id, listID }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+        $('#' + listID).remove();
+    } catch (error) {
+        console.log(error);
+    }
+
+
+})

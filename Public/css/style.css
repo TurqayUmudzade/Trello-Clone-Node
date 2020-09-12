@@ -104,13 +104,34 @@ nav .result {
     width: 15rem;
 }
 
-.lists .list ul li {
+.lists .list ul .list-item {
     box-shadow: 0 1px 0 rgba(9, 30, 66, .25);
     width: 15rem;
 }
 
 .text-color {
     color: #4a5568
+}
+
+.js-list-options h4 {
+    font-family: "Nunito", sans-serif;
+    cursor: default;
+}
+
+.js-list-options .options {
+    height: fit-content;
+}
+
+.options-ul li {
+    cursor: pointer;
+    font-weight: 400;
+    padding: 6px 12px;
+    font-family: "Nunito", sans-serif;
+    background: inherit
+}
+
+.options-ul li:hover {
+    background: #edf2f7;
 }
 
 

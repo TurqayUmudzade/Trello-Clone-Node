@@ -20,12 +20,23 @@
                             <h1 class="font-bold text-xl mb-2">
                                 <%= list.header %>
                             </h1>
-                            <i class="fas fa-ellipsis-h cursor-pointer hover:bg-gray-300 px-1 h-5 rounded"></i>
+                            <i class="js-list-options relative fas fa-ellipsis-h cursor-pointer hover:bg-gray-300 px-1 h-5 rounded">
+                                <div class="options z-10 w-48 border rounded absolute left-0 bg-gray-100 hidden">
+                                    <h4 class="font-bold text-xl  pt-2  pb-3 text-center mb-2 border-b-2">Actions</h4>
+                                    <ul class="options-ul">
+                                        <li class="js-delete-list bg-white rounded  mx-auto my-2 px-2 py-1">Delete List</li>
+                                        <li class="bg-white rounded  mx-auto my-2 px-2 py-1">Archive List</li>
+                                        <li class="bg-white rounded  mx-auto my-2 px-2 py-1">Share List</li>
+                                        <li class="bg-white rounded  mx-auto my-2 px-2 py-1">Move List</li>
+                                    </ul>
+                                </div>
+                            </i>
+
                         </div>
                         <div class="body">
                             <ul>
                                 <% list.listItems.forEach(item => {%>
-                                    <li class="bg-white rounded  mx-auto my-2 px-2 py-1">
+                                    <li class="list-item bg-white rounded  mx-auto my-2 px-2 py-1">
                                         <%= item %>
                                     </li>
                                     <% });  %>

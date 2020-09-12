@@ -18,5 +18,8 @@ router.post('/my-boards/RemoveFromFav', requireAuth, boardContoller.RemoveFromFa
 //SEARCH BAR
 router.get('/search-bar/:searchStr', requireAuth, boardContoller.SearchBar)
 
+//OPTIONS
+router.post('/my-boards/remove-list', requireAuth, boardContoller.removeList)
+
 
 module.exports = router;
