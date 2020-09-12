@@ -56,6 +56,8 @@ $(document).on('click', '.js-add-fav', async function(e) {
 });
 
 $('.board').on('click', function() {
+    if ($(this).hasClass('js-create-board'))
+        return;
     let id = $(this).attr('id');
     window.location.href = '/my-boards/' + id;
 });
