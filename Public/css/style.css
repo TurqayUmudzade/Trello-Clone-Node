@@ -150,10 +150,13 @@ nav .result {
 }
 
 .nav-search-sm {
-    display: block !important;
     position: absolute;
     top: 65px;
-    width: 80%;
+    width: 100%;
+    display: flex !important;
+    justify-content: center;
+    background: white;
+    right: 0;
 }
 
 @media only screen and (max-width: 690px) {
@@ -168,6 +171,9 @@ nav .result {
 @media only screen and (max-width: 550px) {
     nav .search-bar {
         display: none;
+    }
+    nav .search-bar input {
+        width: 80%;
     }
     nav .fa-bars {
         display: block;
