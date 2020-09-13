@@ -50,7 +50,17 @@ async function addList(listName) {
         $('.lists .add-list').before(`<div id="${listID}" class="list  mx-4 relative w-64 bg-gray-200 rounded ">
     <div class="header flex justify-between p-3 text-color">
         <h1 class="font-bold text-xl mb-2">${listName}</h1>
-        <i class="fas fa-ellipsis-h cursor-pointer hover:bg-gray-300 px-1 h-5 rounded"></i>
+        <i class="js-list-options relative fas fa-ellipsis-h cursor-pointer hover:bg-gray-300 px-1 h-5 rounded">
+                                <div class="options z-10 w-48 border rounded absolute left-0 bg-gray-100 hidden">
+                                    <h4 class="font-bold text-xl  pt-2  pb-3 text-center mb-2 border-b-2">Actions</h4>
+                                    <ul class="options-ul">
+                                        <li class="js-delete-list bg-white rounded  mx-auto my-2 px-2 py-1">Delete List</li>
+                                        <li class="bg-white rounded  mx-auto my-2 px-2 py-1">Archive List</li>
+                                        <li class="bg-white rounded  mx-auto my-2 px-2 py-1">Share List</li>
+                                        <li class="bg-white rounded  mx-auto my-2 px-2 py-1">Move List</li>
+                                    </ul>
+                                </div>
+                            </i>
     </div>
     <div class="body">
         <ul>
@@ -134,8 +144,9 @@ async function addCard(listID, text) {
 }
 
 
-//COSMETIC
-$('.js-list-options').on('click', function() {
+//COSMETIC    
+$(document).on('click', '.js-list-options', function(e) {
+
     let child = $(this).children('.options');
     if (child.hasClass('hidden'))
         child.removeClass('hidden')
@@ -143,11 +154,10 @@ $('.js-list-options').on('click', function() {
         child.addClass('hidden')
 })
 
-
-$('.js-delete-list').on('click', async function() {
+$(document).on('click', '.js-delete-list', function() {
     let listID = $(this).closest('.list').attr('id');
     try {
-        const res = await fetch('remove-list', {
+        fetch('remove-list', {
             method: 'POST',
             body: JSON.stringify({ id, listID }),
             headers: { 'Content-Type': 'application/json' }
