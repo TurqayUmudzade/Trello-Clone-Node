@@ -169,3 +169,11 @@ $(document).on('click', '.js-delete-list', function() {
 
 
 })
+
+//SORTJS
+const el = document.getElementById("Lists");
+const sortable = Sortable.create(el, {
+    animation: 200,
+    ghostClass: 'myghostclass',
+    dragClass: 'sortable-drag'
+});
