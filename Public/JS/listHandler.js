@@ -135,7 +135,7 @@ async function addCard(listID, text) {
         });
         const data = await res.json();
         console.log(data);
-        $('#' + listID + ' ul ').append(`<li class="bg-white rounded h-8 mx-auto my-2 px-2 py-1">${text}</li>`);
+        $('#' + listID + ' ul ').append(`<li class="list-item bg-white rounded  mx-auto my-2 px-2 py-1">${text}</li>`);
     } catch (error) {
         console.log(error);
     }
