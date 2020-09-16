@@ -20,6 +20,8 @@ router.get('/search-bar/:searchStr', requireAuth, boardContoller.SearchBar)
 
 //OPTIONS
 router.post('/my-boards/remove-list', requireAuth, boardContoller.removeList)
+    //SWAP
+router.post('/my-boards/change-list-order', requireAuth, boardContoller.changeListOrder)
 
 
 module.exports = router;

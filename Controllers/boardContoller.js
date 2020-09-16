@@ -103,10 +103,21 @@ module.exports.SearchBar = async(req, res) => {
 module.exports.removeList = async(req, res) => {
 
     const { id, listID } = req.body;
-    let doc = await Board.findById(id);
-    doc.lists.find(list => list.id === listID);
     await Board.updateOne({ _id: id }, { "$pull": { "lists": { "_id": listID } } }, { safe: true }, function(err, obj) {
         if (err)
             console.log(err);
     });
 }
+
+//:POST/change-lis-order
+module.exports.changeListOrder = async(req, res) => {
+    const { id, listID, oldIndex, newIndex } = req.body;
+    const doc = await Board.findById(id);
+
+    let [oldValue, newValue] = [doc.lists[oldIndex], doc.lists[newIndex]];
+
+    doc.lists.set(oldIndex, newValue);
+    doc.lists.set(newIndex, oldValue);
+
+    await doc.save();
+};

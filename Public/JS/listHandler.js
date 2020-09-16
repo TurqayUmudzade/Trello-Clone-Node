@@ -175,5 +175,36 @@ const el = document.getElementById("Lists");
 const sortable = Sortable.create(el, {
     animation: 200,
     ghostClass: 'myghostclass',
-    dragClass: 'sortable-drag'
+    dragClass: 'sortable-drag',
+    onChoose: function(evt) {
+        // element index within parent
+
+    },
+
+    // Element is unchosen
+    onUnchoose: function(evt) {
+        // same properties as onEnd
+    },
+
+    // Element dragging started
+    onStart: function(evt) {
+
+    },
+
+    onEnd: async function(evt) {
+
+        let oldIndex = evt.oldDraggableIndex;
+        let newIndex = evt.newDraggableIndex;
+        let listID = evt.item.id;
+        try {
+            await fetch('change-list-order', {
+                method: 'POST',
+                body: JSON.stringify({ id, listID, oldIndex, newIndex }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+
+    },
 });

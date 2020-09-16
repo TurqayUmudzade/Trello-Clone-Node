@@ -182,3 +182,14 @@ nav .result {
         display: none;
     }
 }
+
+
+/* SORTABLE */
+
+.myghostclass {
+    background-color: #f5f6fa;
+}
+
+.sortable-drag {
+    opacity: 0.0s;
+}
