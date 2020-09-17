@@ -51,7 +51,6 @@ module.exports.BoardDetails = async(req, res) => {
 module.exports.AddToFav = async(req, res) => {
 
     const { id } = req.body;
-    console.log(id);
     let board = await Board.findById(id)
     board.starred = true;
     await board.save();
@@ -59,9 +58,7 @@ module.exports.AddToFav = async(req, res) => {
 
 //:POST/RemoveFromFav
 module.exports.RemoveFromFav = async(req, res) => {
-
     const { id } = req.body;
-    console.log(id);
     let board = await Board.findById(id)
     board.starred = false;
     await board.save();
@@ -113,9 +110,7 @@ module.exports.removeList = async(req, res) => {
 module.exports.changeListOrder = async(req, res) => {
     const { id, listID, oldIndex, newIndex } = req.body;
     const doc = await Board.findById(id);
-
     let [oldValue, newValue] = [doc.lists[oldIndex], doc.lists[newIndex]];
-
     doc.lists.set(oldIndex, newValue);
     doc.lists.set(newIndex, oldValue);
 
