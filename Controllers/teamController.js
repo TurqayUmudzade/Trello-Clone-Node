@@ -4,10 +4,7 @@ module.exports.getChat = (req, res) => {
 
 
 module.exports.respond = function(socket) {
-    console.log('user join');
-    socket.on('disconnect', () => {
-        console.log('user left');
-    })
+    socket.on('disconnect', () => {})
 
     socket.on('SendMessage', msg => {
         socket.broadcast.emit('ReceiveMessage', msg)
